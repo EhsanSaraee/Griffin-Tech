@@ -1,8 +1,14 @@
+import { AiOutlineTwitter, AiFillInstagram } from 'react-icons/ai';
+
 const Footer = () => {
    return (
-      <>
-         <h1>Footer</h1>
-      </>
+      <div className="footer-container">
+         <p>2022 Griffin Tech All rights reserved</p>
+         <p className="icons">
+            <AiFillInstagram />
+            <AiOutlineTwitter />
+         </p>
+      </div>
    );
 };
 

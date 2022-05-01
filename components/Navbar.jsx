@@ -1,8 +1,19 @@
+import Link from 'next/link';
+import { AiOutlineShopping } from 'react-icons/ai';
+
 const Navbar = () => {
    return (
-      <>
-         <h1>Navbar</h1>
-      </>
+      <div className="navbar-container">
+         <p className="logo">
+            <Link passHref href="/">
+               Griffin Tech
+            </Link>
+         </p>
+         <button type="button" className="cart-icon">
+            <AiOutlineShopping />
+            <span className="cart-item-qty">1</span>
+         </button>
+      </div>
    );
 };
 
