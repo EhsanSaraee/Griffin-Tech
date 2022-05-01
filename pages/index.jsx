@@ -1,4 +1,4 @@
-import { FooterBanner, HeroBanner } from 'components';
+import { FooterBanner, HeroBanner, Product } from 'components';
 import { client } from 'lib/client';
 
 const Home = ({ products, bannerData }) => {
@@ -10,7 +10,9 @@ const Home = ({ products, bannerData }) => {
             <p>speaker There are many variations and passages</p>
          </div>
          <div className="products-container">
-            {products?.map((product) => product.name)}
+            {products?.map((product) => (
+               <Product key={product._id} {...product} />
+            ))}
          </div>
          <FooterBanner />
       </section>
