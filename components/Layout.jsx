@@ -1,8 +1,21 @@
-const Layout = () => {
+import Head from 'next/head';
+import Footer from './Footer';
+import Navbar from './Navbar';
+
+const Layout = ({ children }) => {
    return (
-      <>
-         <h1>Layout</h1>
-      </>
+      <div className="layout">
+         <Head>
+            <title>Griffin-Tech</title>
+         </Head>
+         <header>
+            <Navbar />
+         </header>
+         <main className="main-container">{children}</main>
+         <footer>
+            <Footer />
+         </footer>
+      </div>
    );
 };
 
