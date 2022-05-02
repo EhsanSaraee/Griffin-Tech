@@ -9,12 +9,10 @@ import {
    AiOutlineStar,
 } from 'react-icons/ai';
 
-const ProductDetails = ({
-   product: { name, image, price, details },
-   products,
-}) => {
+const ProductDetails = ({ product, products }) => {
+   const { name, image, price, details } = product;
    const [index, setIndex] = useState(0);
-   const { incQty, decQty, qty } = useStateContext();
+   const { incQty, decQty, qty, onAdd } = useStateContext();
 
    return (
       <section>
@@ -71,7 +69,11 @@ const ProductDetails = ({
                   </p>
                </div>
                <div className="buttons">
-                  <button type="button" className="add-to-cart">
+                  <button
+                     type="button"
+                     className="add-to-cart"
+                     onClick={() => onAdd(product, qty)}
+                  >
                      Add to Cart
                   </button>
                   <button type="button" className="buy-now">
