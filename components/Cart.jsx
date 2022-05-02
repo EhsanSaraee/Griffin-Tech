@@ -20,6 +20,8 @@ const Cart = () => {
       incQty,
       decQty,
       qty,
+      toggleCartItemQuantity,
+      onRemove,
    } = useStateContext();
 
    return (
@@ -66,16 +68,36 @@ const Cart = () => {
                            <div className="flex bottom">
                               <div>
                                  <p className="quantity-desc">
-                                    <span className="minus" onClick={decQty}>
+                                    <span
+                                       className="minus"
+                                       onClick={() =>
+                                          toggleCartItemQuantity(
+                                             item._id,
+                                             'dec'
+                                          )
+                                       }
+                                    >
                                        <AiOutlineMinus />
                                     </span>
-                                    <span className="num">{qty}</span>
-                                    <span className="plus" onClick={incQty}>
+                                    <span className="num">{item.quantity}</span>
+                                    <span
+                                       className="plus"
+                                       onClick={() =>
+                                          toggleCartItemQuantity(
+                                             item._id,
+                                             'inc'
+                                          )
+                                       }
+                                    >
                                        <AiOutlinePlus />
                                     </span>
                                  </p>
                               </div>
-                              <button type="button" className="remove-item">
+                              <button
+                                 type="button"
+                                 className="remove-item"
+                                 onClick={() => onRemove(item)}
+                              >
                                  <TiDeleteOutline />
                               </button>
                            </div>
@@ -83,6 +105,19 @@ const Cart = () => {
                      </div>
                   ))}
             </div>
+            {cartItems.length >= 1 && (
+               <div className="cart-bottom">
+                  <div className="total">
+                     <h3>Subtotal: </h3>
+                     <h3>{totalPrice}</h3>
+                  </div>
+                  <div className="btn-container">
+                     <button type="button" className="btn">
+                        Payment
+                     </button>
+                  </div>
+               </div>
+            )}
          </div>
       </section>
    );
